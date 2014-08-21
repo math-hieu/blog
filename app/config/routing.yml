@@ -1,0 +1,19 @@
+login:
+    pattern:   /login
+    defaults:  { _controller: BackendAdminBundle:Default:login }
+login_check:
+    pattern:   /login_check
+logout:
+    pattern: /logout
+    
+backend_admin:
+    resource: "@BackendAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+blog:
+    resource: "@BlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+    
+_welcome:
+    pattern:   /
+    defaults:  { _controller: BlogBundle:Default:index }

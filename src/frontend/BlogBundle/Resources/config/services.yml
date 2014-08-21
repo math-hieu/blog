@@ -1,0 +1,11 @@
+parameters:
+#    blog.example.class: frontend\BlogBundle\Example
+    blog.manager.class: frontend\BlogBundle\Manager\BlogManager
+
+services:
+#    blog.example:
+#        class: %blog.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    blog.blog_manager:
+         class: frontend\BlogBundle\Manager\BlogManager
+         arguments: ["@doctrine.orm.entity_manager"]

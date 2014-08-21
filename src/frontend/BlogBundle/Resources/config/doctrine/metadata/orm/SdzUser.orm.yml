@@ -1,0 +1,12 @@
+SdzUser:
+    type: entity
+    table: sdz_user
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    lifecycleCallbacks: {  }

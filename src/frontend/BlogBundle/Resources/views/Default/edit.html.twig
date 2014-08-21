@@ -1,0 +1,79 @@
+{# empty Twig template #}
+{% extends 'BlogBundle::layout.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/BlogBundle/css/styleBlog.css') }}" type="text/css" media="all" />
+{% endblock %}
+{% block title %}
+    {{ page_title }}
+{% endblock %}
+
+{% block body %}
+    <h2 class="title-add">
+        {% if blog.id %}
+            {{"Editer un article"}}
+        {% else %}
+            {{"Ajouter un article"}}
+        {% endif %}       
+    </h2>
+    <form   class="form form-horizontal margin" action="{% if blog.id %}{{ path('edit',{'blog_id':blog.id}) }}{% else %}{{ path('add')}}{% endif %}" method="post">
+        <div class='errors'>
+            {{ form_errors(form) }}
+        </div>        
+            {% for flash in app.session.getFlashes() %}
+                <div class="info">
+                    <span style="margin-left:15px">{{ flash }}</span>
+                </div>
+            {% endfor %}
+            <fieldset>
+                <h5>{{ form_label(form.title) }}</h5>
+                {{ form_errors(form.title) }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+
+                <h5>{{ form_label(form.author) }}</h5>
+                {{ form_errors(form.author) }}
+                {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+
+                <h5>{{ form_label(form.techno) }}</h5>
+                 {{ form_errors(form.techno) }}
+                {{ form_widget(form.techno) }}
+                
+                <h5>{{ form_label(form.type) }}</h5>
+                 {{ form_errors(form.type) }}
+                {{ form_widget(form.type) }}
+
+                <h5>{{ form_label(form.text) }}</h5>
+                {{ form_errors(form.text) }}
+                {{ form_widget(form.text) }}
+
+                <h5>{{ form_label(form.created) }}</h5>
+                {{ form_errors(form.created) }}
+                {{ form_widget(form.created) }}
+                
+                <h5>{{ form_label(form.name_file) }}</h5>
+                {{ form_errors(form.name_file) }}
+                {{ form_widget(form.name_file, {'attr': {'class': 'form-control'}}) }}
+                
+                <h5>{{ form_label(form.is_publish) }}</h5>
+                {{ form_errors(form.is_publish) }}
+                {{ form_widget(form.is_publish) }}
+
+                {{ form_widget(form._token) }}
+                
+                <div class="margin">
+                    <button type="submit" class="btn btn-success">Ajouter/modifier</button>
+                </div>
+            </fieldset>                
+    </form>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/BlogBundle/js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shCore.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shBrushPhp.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shBrushJScript.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shBrushCss.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shBrushXml.js') }}"></script>
+    <script>
+        SyntaxHighlighter.all();
+    </script>    
+{% endblock %}
+    

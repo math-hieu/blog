@@ -1,0 +1,34 @@
+BlogComment:
+    type: entity
+    table: blog_comment
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        author:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+        content:
+            type: text
+            nullable: false
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+    manyToOne:
+        blog:
+            targetEntity: Blog
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                blog_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

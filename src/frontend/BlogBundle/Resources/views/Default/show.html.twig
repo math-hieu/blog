@@ -1,0 +1,40 @@
+{# empty Twig template #}
+{% extends 'BlogBundle::layout.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/BlogBundle/css/styleBlog.css') }}" type="text/css" media="all" />
+{% endblock %}
+{% block title %}
+    {{ page_title }}
+{% endblock %}
+{% block menutechno %}
+
+{% endblock %}
+    
+{% block body %}
+    <h2 class="title-add">{{ blog.title }}</h2>
+    <span style="text-align:right;text-decoration:underline;font-size: 12px;font-weight: bold;color: #6b9311;">Article écrit par : {{ blog.author }}</span>
+    <br/><span style="text-align:right;font-size: 12px;font-weight: bold;color: #6b9311;">Créé le {{ blog.created|date("d/m/Y")}}</span>
+    <br/><span style="text-align:right;font-size: 12px;font-weight: bold;color: #6b9311;">Modifié le {{ blog.updated|date("d/m/Y") }}</span>
+    <div style="margin-top:20px">
+        <a style="float: right" href="{{ path('blog_homepage') }}"><i class="icon-angle-double-left"></i>Retour aux articles</a>
+        {% if blog.nameFile != null %}
+            <a class="link_download" href="{{ path('download', {'name_file':blog.nameFile}) }}"><i class="icon-download"></i> Télécharger le code</a>
+        {% endif %}
+    </div>
+    <div style="clear:both"></div>
+    <div id="text-article">
+        {{ blog.text|raw }}
+    </div>
+    
+{% endblock %}
+    
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shCore.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shBrushPhp.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shBrushJScript.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shBrushCss.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/BlogBundle/js/shBrushXml.js') }}"></script>
+    <script>
+        SyntaxHighlighter.all();
+    </script>
+{% endblock %}

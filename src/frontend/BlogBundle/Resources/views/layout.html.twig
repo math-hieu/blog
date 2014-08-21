@@ -1,0 +1,96 @@
+{# empty Twig template #}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Blog de mthomas{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.png') }}" />
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-41498623-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+        </script>
+        
+        <link rel="stylesheet" href="{{ asset('bundles/BlogBundle/css/fontello/css/fontello.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('bundles/BlogBundle/css/bootstrap.css') }}" type="text/css" media="all" />    
+        <link rel="stylesheet" href="{{ asset('bundles/BlogBundle/css/styleBlog.css') }}" type="text/css" media="all" />
+
+        <link rel="stylesheet" href="{{ asset('bundles/BlogBundle/css/shCore.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('bundles/BlogBundle/css/shThemeDefault.css') }}" type="text/css" media="all" />
+        
+        <link rel="stylesheet" href="{{ asset('bundles/BlogBundle/js/ckeditor/plugins/pbckcode/dialogs/style.css') }}" type="text/css" media="all" />        
+    </head>
+    <body>
+    <div class="jumbotron back-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div>
+                        <img style="float:left"  src="{{ asset('bundles/BlogBundle/images/avatar.png') }}" width="150" />
+                        <div style="float:left;margin-top: 20px;margin-left:20px">
+                            <h2 class="title">Blog de mthomas</h2>
+                            <h4 class="sub-title">Ingénieur Etude et développement PHP</h4>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <div style="margin-top: 40px;margin-left:20px;">
+                        <a href="http://www.linkedin.com/pub/mathieu-thomas/59/1a/797"  target="_blank">
+                           <img src="{{ asset('bundles/BlogBundle/images/social/linkedin.png') }}" width="7%" /> 
+                        </a>
+                        <a href="https://twitter.com/math_hieu" style="margin-left:10px;" target="_blank">
+                           <img src="{{ asset('bundles/BlogBundle/images/social/twitter.png') }}" width="7%" /> 
+                        </a>
+                        <a href="http://fr.viadeo.com/fr/profile/mathieu.thomas1457" style="margin-left:10px;" target="_blank">
+                           <img src="{{ asset('bundles/BlogBundle/images/social/viadeo.png') }}" width="7%" /> 
+                        </a> 
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="margin">
+                        <p>
+                            <a class="btn btn-vert btn-lg" href="{{ path('blog_homepage') }}">
+                                Articles
+                                <br />
+                                <span style="font-size:12px">(Afficher tous les articles du blog)</span>
+                            </a>
+                        </p>
+                        <p>
+                            <a class="btn btn-orange btn-lg" href="http://mthomas.fr" target="_blank">
+                                Mon site Web<br /><span style="font-size:12px">(http://www.mthomas.fr)</span>
+                            </a>
+                        </p>
+                        <p>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a class="btn btn-turquoise btn-lg" href="{{ path('logout') }}">
+                                    Déconnexion<br /><span style="font-size:12px">(Déconnectez-vous)</span>
+                                </a>
+                            {% else %}
+                                <a class="btn btn-turquoise btn-lg" href="{{ path('login') }}">
+                                    Connexion<br /><span style="font-size:12px">(Connectez-vous afin d'avoir accès à toutes les options)</span>
+                                </a>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+      	</div>
+    </div>
+    <div class="container">
+        {% block menutechno %}
+        
+        {% endblock %}
+        {% block body %}
+
+        {% endblock %}
+    </div>
+    {% block javascripts %}{% endblock %}    
+    </body>
+</html>

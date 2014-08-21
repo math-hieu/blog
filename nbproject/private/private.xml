@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Resources/views/layout.html.twig</file>
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Resources/views/Default/index.html.twig</file>
+        <file>file:/C:/wamp/www/symfony/web/bundles/BlogBundle/css/styleBlog.css</file>
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Resources/views/Default/show.html.twig</file>
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Controller/AdminBlogController.php</file>
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Form/blogType.php</file>
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Resources/views/Default/edit.html.twig</file>
+        <file>file:/C:/wamp/www/symfony/web/app.php</file>
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Controller/DefaultController.php</file>
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Entity/BlogType.php</file>
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Entity/blog.php</file>
+        <file>file:/C:/wamp/www/symfony/src/frontend/BlogBundle/Entity/BlogTechno.php</file>
+        <file>file:/C:/wamp/www/symfony/src/Backend/AdminBundle/Controller/DefaultController.php</file>
+        <file>file:/C:/wamp/www/symfony/src/Backend/AdminBundle/Resources/views/Default/login.html.twig</file>
+        <file>file:/C:/wamp/www/symfony/app/config/security.yml</file>
+        <file>file:/C:/wamp/www/symfony/app/config/config.yml</file>
+    </open-files>
+</project-private>

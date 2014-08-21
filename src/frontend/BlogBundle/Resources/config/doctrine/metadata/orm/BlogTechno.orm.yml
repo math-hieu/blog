@@ -1,0 +1,17 @@
+BlogTechno:
+    type: entity
+    table: blog_techno
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        techno:
+            type: string
+            length: 200
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }

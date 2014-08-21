@@ -1,0 +1,8 @@
+{# empty Twig template #}
+{% set cpt = 1 %}
+<ul class="result-search-article">
+{% for blog in blogs %}
+    <li {% if cpt%2==0 %} class="blanc" {% endif %}><a href="{{ path('show', {'blog_id':blog.id}) }}">{{ blog.title }}</a></li>    
+    {% set cpt = cpt +1 %}
+{% endfor %}
+</ul>

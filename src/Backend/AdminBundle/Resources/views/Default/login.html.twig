@@ -1,0 +1,34 @@
+{# empty Twig template #}
+{# src/Acme/SecurityBundle/Resources/views/Security/login.html.twig #}
+{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+<link rel="stylesheet" href="{{ asset('bundles/BlogBundle/css/admin.css') }}" type="text/css" media="all" />
+<h1 class="title-login">Espace sécurisé</h1>
+<h3 style="color:#fff;text-align:center">
+    {% if error %}
+        Erreur dans le login ou le mot de passe
+    {% endif %}
+</h3>
+<p style="color:#fff;font-size:13px;width:450px;margin:auto">L'espace administrateur propose l'ajout, l'édition et la suppresion d'un article</p>
+<form action="{{ path('login_check') }}" method="post" class="username">
+    <p>
+        <label for="username">Login :</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="_password" />
+    </p>    
+    {#
+        Si vous voulez controler l'URL vers laquelle l'utilisateur est redirigé en cas de succès
+        (plus de détails ci-dessous)
+        <input type="hidden" name="_target_path" value="/account" />
+    #}
+    <p class="login-submit">
+        <button type="submit" class="login-button">login</button>
+    </p>
+    <br />
+    <a href="/app.php/blog" style="width:400px;margin:auto;text-align:left">Retour au blog</a>
+</form>
+

@@ -1,0 +1,22 @@
+BlogLink:
+    type: entity
+    table: blog_link
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        description:
+            type: string
+            length: 500
+            fixed: false
+            nullable: false
+        link:
+            type: string
+            length: 500
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }

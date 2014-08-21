@@ -1,0 +1,27 @@
+blog_homepage:
+    pattern:  /
+    defaults: { _controller: BlogBundle:Default:index }
+
+edit:
+  pattern: /edit/{blog_id}
+  defaults: { _controller: BlogBundle:AdminBlog:edit }
+  
+add:
+  pattern: /add
+  defaults: { _controller: BlogBundle:AdminBlog:add }
+  
+show:
+  pattern: /show/{blog_id}
+  defaults: { _controller: BlogBundle:Default:show }
+  
+search:
+  pattern: /search
+  defaults: { _controller: BlogBundle:Default:search }
+
+download:
+  pattern: /download/{name_file}
+  defaults: { _controller: BlogBundle:Default:download }
+  
+list_blog:
+  pattern: /{techno_id}
+  defaults: { _controller: BlogBundle:Default:index }

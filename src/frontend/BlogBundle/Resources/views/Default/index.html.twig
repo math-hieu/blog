@@ -1,0 +1,100 @@
+{% extends 'BlogBundle::layout.html.twig' %}
+{% block stylesheets %}
+    
+{% endblock %}
+{% block title %}
+    {{ page_title }}
+{% endblock %}
+{% block menutechno %}
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav menu-tabs">
+            <li class="menu nav-all {% if(techno_id == null) %} nav-all-active {% endif %}"><a href="{{ path('blog_homepage') }}">Tout</a></li>
+            <li class="menu nav-php {% if(techno_id == 1) %} nav-php-active {% endif %}"><a href="{{ path('list_blog', {"techno_id":1}) }}">PHP5</a></li>
+            <li class="menu nav-sf2 {% if(techno_id == 2) %} nav-sf2-active {% endif %}"><a href="{{ path('list_blog', {"techno_id":2}) }}">Symfony2</a></li>
+            <li class="menu nav-sf1 {% if(techno_id == 3) %} nav-sf1-active {% endif %}"><a href="{{ path('list_blog', {"techno_id":3}) }}">Symfony1</a></li>
+            <li class="menu nav-js {% if(techno_id == 4) %} nav-js-active {% endif %}"><a href="{{ path('list_blog', {"techno_id":4}) }}">Javascript</a></li>
+            <li class="menu nav-mysql {% if(techno_id == 5) %} nav-mysql-active {% endif %}"><a href="{{ path('list_blog', {"techno_id":5}) }}">MySQL</a></li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <ul class="nav menu-tabs-admin">
+                    <li class="menu nav-all"><a href="{{ path('add') }}">Ajouter un article</a></li>						                
+                </ul>
+            {% endif %}
+        </ul>
+    </div>	
+</div>
+{% endblock %}
+{% block body %}
+<div class="row" style="margin-bottom:30px;">
+    <div class="col-md-8">
+        <div class="liste-article">
+            {% for item in articles %}
+                <div class="article" {% if item.isPublish == 0 %} id="no-publish" {% endif %}>
+                    <h1 class="titre-article">
+                        <a class="tik tk_{{ item.techno }}">{{ item.techno }}</a><a class="tik type_{{ item.type.id }}">{{ item.type }}</a>
+                        <a href="{{ path('show', {'blog_id':item.id}) }}">{{ item.title }}</a>
+                        {% if item.getIsNew() %}
+                            <span class="new_article">Nouveau</span>
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{path('edit',{'blog_id':item.id})}}" style="float:right">
+                                <img src="{{ asset('bundles/BlogBundle/images/edit.png') }}" />
+                            </a>
+                        {% else %}
+                            
+                        {% endif %}
+                    </h1>
+                    <div class="subtitle">
+                        <i class="icon-user-1"></i>&nbsp;Article ecrit par {{ item.author }} le {{ item.created|date("d/m/Y")}}
+                        {% if is_granted('ROLE_ADMIN') == false %}
+                        <a href="{{ path('show', {'blog_id':item.id}) }}" style="float:right;font-size:12px;color:#2C3E50">
+                            <i class="icon-doc-text-inv"></i>Lire l'article<i style="font-size:11px" class="icon-angle-right"></i>
+                        </a>
+                        {% endif %}
+                    </div>                    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="margin" style="border:1px solid #ddd;">
+            <div class="link-util-head">
+                <span class="lien-utile" style=""><i class="icon-list-bullet"></i> Mes Apps</span>
+            </div>
+            <div class="list-lien">
+                <div class="link">
+                    <a href="{{ path('show', {'blog_id':16}) }}" /><i class="icon-window"></i> E-budget | application Android </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="margin" style="border:1px solid #ddd;">
+            <div class="link-util-head">
+                <span class="lien-utile" style=""><i class="icon-list-bullet"></i> Liens utiles</span>
+            </div>
+            <div class="list-lien">
+                <div class="link">
+                    <a href="http://flatuicolors.com/" target="_blank" /><i class="icon-picture-outline"></i> Une couleur en un clique! </a>
+                </div>
+                <div class="link">
+                    <a href="http://fontello.com/" target="_blank" /><i class="icon-picture-outline"></i> Fontello (icon fonts) </a>
+                </div>
+                <div class="link">
+                    <a href="https://kuler.adobe.com" target="_blank" /><i class="icon-picture-outline"></i> Kuler (Adobe) - Nuancier </a>
+                </div>
+                <div class="link">
+                    <a href="http://colorschemedesigner.com/" target="_blank" /><i class="icon-picture-outline"></i> ColorShemeDesigner - Nuancier </a>
+                </div>
+                <div class="link">
+                    <a href="http://devdocs.io/" target="_blank" /><i class="icon-picture-outline"></i> Devdocs - Toutes les docs dans une appli </a>
+                </div>
+                <div class="link">
+                    <a href="http://iconion.com/" target="_blank" /><i class="icon-picture-outline"></i> Iconion - Générateur d'icon </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
